@@ -22,8 +22,12 @@ Bundler.require(*Rails.groups)
 module OdontoclinServer
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.autoload_paths  << Rails.root.join('config/routes')
+    config.autoload_paths << Rails.root.join('config/routes')
     config.load_defaults 6.0
+
+    config.i18n.enforce_available_locales = false
+    config.i18n.available_locales = ['pt-BR']
+    config.i18n.default_locale = :'pt-BR'
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
