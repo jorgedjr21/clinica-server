@@ -1,0 +1,47 @@
+name: odontclin-server
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: ""
+          POSTGRES_DB: odontoclin_server_test
+        ports:
+        - 5432/tcp
+        # needed because the postgres container does not provide a healthcheck
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up Ruby 2.6
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.7.1
+    - name: Install PostgreSQL client
+      run: sudo apt-get install libpq-dev
+
+    - name: DB Configuration
+      env:
+        PGHOST: localhost
+        PGUSER: postgres
+        PGPORT: ${{ job.services.postgres.ports[5432] }}
+        RAILS_ENV: test
+      run: |
+        gem install bundler
+        bundle install --jobs 4 --retry 3
+        bin/rails db:setup
+    - name: Run tests
+      env:
+        PGHOST: localhost
+        PGUSER: postgres
+        PGPORT: ${{ job.services.postgres.ports[5432] }} # get randomly assigned published port
+        RAILS_ENV: test
+      run: |
+        bundle exec rspec
