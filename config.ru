@@ -8,7 +8,7 @@ require 'rack/cors'
 use Rack::Cors do
   # allow all origins in development
   allow do
-    origins '*'
-    resource '*', headers: :any, methods: %i[get post delete put options]
+    origins  '*'
+    resource '*', headers: %w[Authorization], methods: :any, expose: %w[Authorization]
   end
 end

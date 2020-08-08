@@ -15,4 +15,8 @@ Rails.application.routes.draw do
                sessions: 'sessions',
                registrations: 'registrations'
              }
+
+  namespace :dashboard do
+    get '/', action: :index
+  end
 end
