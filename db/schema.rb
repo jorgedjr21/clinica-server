@@ -16,18 +16,28 @@ ActiveRecord::Schema.define(version: 2020_08_08_193900) do
   enable_extension "plpgsql"
 
   create_table "addresses", force: :cascade do |t|
-    t.integer "address_type", default: 0
     t.string "street", null: false
     t.string "number"
     t.string "complement"
     t.string "city"
     t.string "state"
     t.string "zipcode", null: false
-    t.bigint "addressable_id"
     t.string "addressable_type"
+    t.bigint "addressable_id"
+    t.bigint "clinic_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
+    t.index ["clinic_id"], name: "index_addresses_on_clinic_id"
+  end
+
+  create_table "clinics", force: :cascade do |t|
+    t.string "name"
+    t.string "subdomain"
+    t.string "contact_phone_1"
+    t.string "contact_phone_2"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "jwt_blacklist", force: :cascade do |t|
@@ -46,8 +56,10 @@ ActiveRecord::Schema.define(version: 2020_08_08_193900) do
     t.string "contact_phone2"
     t.boolean "active", default: false
     t.string "comments"
+    t.bigint "clinic_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["clinic_id"], name: "index_patients_on_clinic_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -56,9 +68,11 @@ ActiveRecord::Schema.define(version: 2020_08_08_193900) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.bigint "clinic_id"
     t.string "name", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["clinic_id"], name: "index_users_on_clinic_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

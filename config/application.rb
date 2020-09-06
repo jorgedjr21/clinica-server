@@ -22,6 +22,7 @@ Bundler.require(*Rails.groups)
 module OdontoclinServer
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    config.autoloader = :zeitwerk
     config.autoload_paths << Rails.root.join('config/routes')
     config.load_defaults 6.0
 

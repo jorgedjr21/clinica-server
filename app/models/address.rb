@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Address < ApplicationRecord
+  include ClinicScoped
   belongs_to :addressable, polymorphic: true
 
   validates :street,  presence: true, allow_blank: false
