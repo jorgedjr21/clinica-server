@@ -12,4 +12,6 @@ Metrics/MethodLength:
   Max: 15
 Bundler/GemComment:
   Enabled: false
+Style/Copyright:
+  Enabled: false
   

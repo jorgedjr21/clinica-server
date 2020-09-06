@@ -8,7 +8,7 @@ Rails.application.configure do
 
   # Do not eager load code on boot.
   config.eager_load = false
-  config.hosts << /[a-z0-9]+\.lvh\.me/
+  config.hosts << /[A-Za-z0-9](?:[A-Za-z0-9\-]{0,61}[A-Za-z0-9])?+\.lvh\.me/
 
   # Show full error reports.
   config.consider_all_requests_local = true
