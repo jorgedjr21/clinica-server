@@ -4,5 +4,12 @@ AllCops:
   EnabledByDefault: true
 Style/Documentation:
   Enabled: false
+Style/MethodCallWithArgsParentheses:
+  Enabled: false
 Lint/ConstantResolution:
   Enabled: false
+Metrics/MethodLength:
+  Max: 15
+Bundler/GemComment:
+  Enabled: false
+  

@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::API
+  set_current_tenant_by_subdomain(:clinic, :subdomain)
+
   def render_resource(resource)
     if resource.errors.empty?
       render json: resource

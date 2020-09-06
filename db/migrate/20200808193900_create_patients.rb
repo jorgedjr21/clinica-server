@@ -11,8 +11,9 @@ class CreatePatients < ActiveRecord::Migration[6.0]
       t.string :contact_phone1
       t.string :contact_phone2
       t.boolean :active, default: false
-      
       t.string :comments
+
+      t.references :clinic, index: true
       t.timestamps
     end
   end

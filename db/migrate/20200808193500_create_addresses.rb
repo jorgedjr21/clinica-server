@@ -3,7 +3,6 @@
 class CreateAddresses < ActiveRecord::Migration[6.0]
   def change
     create_table :addresses do |t|
-      t.integer :address_type, default: 0
       t.string :street, null: false
       t.string :number
       t.string :complement
@@ -11,11 +10,9 @@ class CreateAddresses < ActiveRecord::Migration[6.0]
       t.string :state
       t.string :zipcode, null: false
 
-      t.bigint  :addressable_id
-      t.string  :addressable_type
+      t.references :addressable, polymorphic: true, index: true
+      t.references :clinic, index: true
       t.timestamps
     end
-
-    add_index :addresses, %i[addressable_type addressable_id]
   end
 end
