@@ -6,16 +6,16 @@ class ClinicsController < ApplicationController
   def index
     ActsAsTenant.without_tenant do
       @clinics = Clinic.all
-      render 'clinics/index.json', status: :ok
+      render json: @clinics.to_json, status: :ok
     end
   end
 
   def create
     @clinic = Clinic.new(permitted_params)
     if @clinic.save
-      render 'clinics/create.json', status: :created
+      render @clinic.to_json, status: :created
     else
-      render 'clinics/create.json', status: :unprocessable_entity
+      render @clinic.errors.to_json, status: :unprocessable_entity
     end
   end
 

@@ -1,7 +1,4 @@
 class ApplicationController < ActionController::API
-  include ActionController::ImplicitRender
-  include ActionView::Rendering
-
   set_current_tenant_by_subdomain(:clinic, :subdomain)
 
   def render_resource(resource)

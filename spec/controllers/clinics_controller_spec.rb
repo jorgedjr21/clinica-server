@@ -26,9 +26,8 @@ RSpec.describe ClinicsController, type: :controller do
 
     it 'must have the clinic name' do
       clinics_request
-      data = JSON.parse(response.body).first
 
-      expect(data['name']).to eq(clinic.name)
+      expect(response.body).to include(clinic.to_json)
     end
   end
 
