@@ -1,0 +1,14 @@
+pt-BR:
+  activerecord:
+    errors:
+      models:
+        clinic:
+          attributes:
+            name:
+              blank: 'não pode ficar em branco'
+            subdomain:
+              blank: 'não pode ficar em branco'
+            contact_phone_1:
+              blank: 'não pode ficar em branco'
+            contact_phone_2:
+              blank: 'não pode ficar em branco'

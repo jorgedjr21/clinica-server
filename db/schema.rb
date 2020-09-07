@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2020_08_08_193900) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.bigint "clinic_id"
+    t.boolean "is_admin", default: false
     t.string "name", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

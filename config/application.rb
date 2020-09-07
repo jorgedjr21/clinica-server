@@ -27,6 +27,7 @@ module OdontoclinServer
     config.load_defaults 6.0
 
     config.i18n.enforce_available_locales = false
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s]
     config.i18n.available_locales = ['pt-BR']
     config.i18n.default_locale = :'pt-BR'
 

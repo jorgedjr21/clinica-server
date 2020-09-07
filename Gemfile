@@ -28,6 +28,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-jwt'
+gem 'jsonapi-rails'
 gem 'rack-cors'
 gem 'rubocop-rails', require: false
 
