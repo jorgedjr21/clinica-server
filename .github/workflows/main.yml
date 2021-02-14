@@ -1,4 +1,4 @@
-name: odontclin-server
+name: clinica-server
 
 on: [push]
 
