@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe DashboardController, type: :controller do
-  let!(:user) { create(:user) }
+  let(:user) { create(:user) }
   describe 'GET /dashboard/' do
     let(:dashboard_index_subject) { get :index, params: {} }
     context 'user logged in' do

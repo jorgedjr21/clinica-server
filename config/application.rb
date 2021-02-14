@@ -22,9 +22,9 @@ Bundler.require(*Rails.groups)
 module OdontoclinServer
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    config.load_defaults 6.0
     config.autoloader = :zeitwerk
     config.autoload_paths << Rails.root.join('config/routes')
-    config.load_defaults 6.0
 
     config.i18n.enforce_available_locales = false
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s]

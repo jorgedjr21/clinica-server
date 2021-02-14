@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class Patient < ApplicationRecord
+  include ClinicScoped
   has_one :address, as: :addressable, dependent: :destroy
+  belongs_to :clinic
 
   validates :name,           presence: true, allow_blank: false
   validates :email,          presence: true, allow_blank: false
