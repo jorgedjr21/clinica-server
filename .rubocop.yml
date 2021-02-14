@@ -1,0 +1,8 @@
+require: rubocop-rails
+
+AllCops:
+  EnabledByDefault: true
+Style/Documentation:
+  Enabled: false
+Lint/ConstantResolution:
+  Enabled: false
