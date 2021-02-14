@@ -1,4 +1,4 @@
-FROM ruby:2.7-alpine
+FROM ruby:2.7.1-alpine
 RUN apk add --no-cache --update \
   build-base \
   linux-headers \
@@ -9,12 +9,12 @@ RUN apk add --no-cache --update \
   graphviz \
   gmp-dev
 
-RUN mkdir /odontoclin-server  
-WORKDIR /odontoclin-server
-COPY Gemfile /odontoclin-server/Gemfile
-COPY Gemfile.lock /odontoclin-server/Gemfile.lock
+RUN mkdir /clinica-server  
+WORKDIR /clinica-server
+COPY Gemfile /clinica-server/Gemfile
+COPY Gemfile.lock /clinica-server/Gemfile.lock
 RUN bundle install
-COPY . /odontoclin-server
+COPY . /clinica-server
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/

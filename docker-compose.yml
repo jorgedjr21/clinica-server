@@ -16,7 +16,7 @@ services:
       - BUNDLE_PATH=/bundle/vendor
       - DEVISE_JWT_SECRET_KEY=405a8ac8206453e50545197cd1fb69daed71672bce443f76e54b9defa6ceb8f5c9e9a88f0fe426b5567192d55b93b5d8c1ac9d619b0a109d0fd4328c6108ff41
     volumes:
-      - .:/odontoclin-server
+      - .:/clinica-server
       - bundle_path:/bundle
     ports:
       - "3001:3001"
