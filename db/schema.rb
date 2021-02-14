@@ -10,15 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_01_212059) do
+ActiveRecord::Schema.define(version: 2020_08_08_193900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.integer "address_type", default: 0
+    t.string "street", null: false
+    t.string "number"
+    t.string "complement"
+    t.string "city"
+    t.string "state"
+    t.string "zipcode", null: false
+    t.bigint "addressable_id"
+    t.string "addressable_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
+  end
 
   create_table "jwt_blacklist", force: :cascade do |t|
     t.string "jti", null: false
     t.datetime "exp", null: false
     t.index ["jti"], name: "index_jwt_blacklist_on_jti"
+  end
+
+  create_table "patients", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "cpf"
+    t.string "gender"
+    t.date "birthdate"
+    t.string "contact_phone1"
+    t.string "contact_phone2"
+    t.boolean "active", default: false
+    t.string "comments"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
